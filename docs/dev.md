@@ -9,10 +9,12 @@
 Gui程序采用tauri-solid-ts-tailwind-vite脚手架。从github下载后重命名为gui，然后参考readme进行相关工具和库的更新。
 
 下载地址：https://github.com/AR10Dev/tauri-solid-ts-tailwind-vite 。
+
 2. 布局
 
 ![alt text](img/2.png)
 
 在src\App.tsx中通过tailwindcss完成整体布局。
+
 3. 开发进度
 - 2月17日：完成全局消息。完成生命周期。完成前端solid里调用后端rust代码的测试。
