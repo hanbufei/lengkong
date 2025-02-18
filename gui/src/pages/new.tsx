@@ -1,8 +1,7 @@
 import Footer from '@components/Footer'
-import Main from '@components/Main'
 import {createEffect, createSignal,type Component } from 'solid-js'
 
-const App: Component = () => {
+const New: Component = () => {
   //全局变量
   const [delay, setDelay] = createSignal(5);//生命周期:每帧是5秒
   const [message, setMessage] = createSignal({ 
@@ -26,10 +25,10 @@ const App: Component = () => {
 
   return (
     <div class="w-screen h-screen flex flex-col">
-        <Main sendMessage={sendMessage}/>
+        <a href="/admin" class="h-full w-full flex flex-row items-start justify-start">返回管理台</a>
         <Footer message={message}/>
     </div>
   )
 }
 
-export default App
+export default New
