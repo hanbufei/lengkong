@@ -40,8 +40,8 @@ const Login: Component = () => {
 
   return (
     <div class="w-screen h-screen flex flex-col bg-[url('/img/bg.png')] bg-cover">
-        <h1 class="pt-4 text-center text-3xl text-white">冷空CMS管理后台</h1>
-        <div class="border-b-2 pt-2"/>
+        <h1 class="pt-8 text-center text-3xl text-white">冷空CMS管理后台</h1>
+        <div class="border-b-2 pt-4 border-b-gray-500"/>
         <form class="h-full w-full flex flex-col items-start text-white pl-8 pt-40">
           <div class="flex flex-row pt-2 ">
             <label>用户：</label>
