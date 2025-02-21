@@ -1,5 +1,6 @@
 import { createEffect, createSignal, Match, Switch } from "solid-js";
-import { get_class_by_id } from "src/data/commands";
+import { add_article, edit_article_text, list_article } from "src/data/article";
+import { add_class, delete_class, edit_class, get_class, list_class } from "src/data/class";
 
 export default function Main({sendMessage}){
   const [menu, setMenu] = createSignal("home");//当前菜单
@@ -17,13 +18,18 @@ export default function Main({sendMessage}){
             <a href="/new" class="border-b-2 hover:border-b-orange-500">新增</a>
           }>
             <Match when={menu() == "class"}>
-              <button onClick={()=>sendMessage("text-orange-500","text-orange-500")}>text-orange-500</button>
+            <button onClick={()=>list_article(10,1)
+              .then((res) => setText(JSON.stringify(res)))
+              .catch((error) => console.log(error,"text-orange-500"))}>
+                list_class
+              </button>
+              {text()}
             </Match>
             <Match when={menu() == "label"}>
-              <button onClick={()=>get_class_by_id(1)
+              <button onClick={()=>edit_article_text(1,"name","1111")
               .then((res) => setText(JSON.stringify(res)))
-              .catch((error) => sendMessage("错误: "+error,"text-red-500"))}>
-                get_class_by_id
+              .catch((error) => sendMessage(error,"text-red-500"))}>
+                test
               </button>
               {text()}
             </Match>

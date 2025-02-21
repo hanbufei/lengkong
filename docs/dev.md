@@ -26,3 +26,5 @@ Gui程序采用tauri-solid-ts-tailwind-vite脚手架。从github下载后重命�
   + 新建dao目录用于数据库交互。
   + 新建service目录(套tauri的command宏)用于逻辑处理和js调用。
   + 完成gui页面调用数据库查询的测试。
+
+- 2月21日:完成数据库中全部表的dao层和service层的增删改查等基本操作。

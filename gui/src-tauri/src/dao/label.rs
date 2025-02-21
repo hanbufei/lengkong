@@ -5,30 +5,30 @@ use super::get_pool;
 
 //类别表
 #[derive(Serialize, Deserialize,Debug,FromRow)]
-pub struct Class {
+pub struct Label {
     pub id: u64,
-    pub class_name: String,
+    pub label_name: String,
     pub detail: Option<String>,
 }
 
-impl Default for Class {
+impl Default for Label {
     fn default() -> Self {
-        Self { id: Default::default(), class_name: Default::default(), detail: Default::default() }
+        Self { id: Default::default(), label_name: Default::default(), detail: Default::default() }
     }
 }
 
-impl Class {
-    async fn is_exist(class_name:String) -> Result<bool, Box<dyn std::error::Error>>{
+impl Label {
+    async fn is_exist(label_name:String) -> Result<bool, Box<dyn std::error::Error>>{
         let pool: sqlx::Pool<sqlx::MySql> = get_pool().await?;
         //sql 查询
-        let res: Result<Class, sqlx::Error> = sqlx::query_as(
+        let res: Result<Label, sqlx::Error> = sqlx::query_as(
             r#"
-            SELECT `id`, `class_name`,`detail`
-            FROM `class`
-            WHERE `class_name` = ?
+            SELECT `id`, `label_name`,`detail`
+            FROM `label`
+            WHERE `label_name` = ?
         "#,
         )
-        .bind(class_name)
+        .bind(label_name)
         .fetch_one(&pool)
         .await;
         match res {
@@ -38,13 +38,13 @@ impl Class {
         }
     }
 
-    pub async fn fetch_one(id:u64) -> Result<Class, Box<dyn std::error::Error>>{
+    pub async fn fetch_one(id:u64) -> Result<Label, Box<dyn std::error::Error>>{
         let pool = get_pool().await?;
         //sql 查询
-        let res: Class = sqlx::query_as(
+        let res: Label = sqlx::query_as(
             r#"
-            SELECT `id`, `class_name`,`detail`
-            FROM `class`
+            SELECT `id`, `label_name`,`detail`
+            FROM `label`
             WHERE `id` = ?
         "#,
         )
@@ -57,13 +57,13 @@ impl Class {
         // Ok(serialized)
     }
 
-    pub async fn list(page_size:u8,page_num:u64) -> Result<Vec<Class>, Box<dyn std::error::Error>>{
+    pub async fn list(page_size:u8,page_num:u64) -> Result<Vec<Label>, Box<dyn std::error::Error>>{
         let pool = get_pool().await?;
         //sql 查询
         let res = sqlx::query_as(
            r#"
-            SELECT `id`, `class_name`,`detail`
-            FROM `class`
+            SELECT `id`, `label_name`,`detail`
+            FROM `label`
             ORDER by `id`
             LIMIT ? 
             OFFSET ?
@@ -75,17 +75,17 @@ impl Class {
         Ok(res)
     }
 
-    pub async fn add(class_name:String,detail:String) -> Result<u64, Box<dyn std::error::Error>>{
-        let exist = Self::is_exist(class_name.clone()).await?;
+    pub async fn add(label_name:String,detail:String) -> Result<u64, Box<dyn std::error::Error>>{
+        let exist = Self::is_exist(label_name.clone()).await?;
         if exist == false{
             let pool = get_pool().await?;
             let res = sqlx::query(
                 r#"
-                INSERT INTO `class` (`class_name`,`detail`)
+                INSERT INTO `label` (`label_name`,`detail`)
                 VALUES (?, ?)
             "#
             )
-            .bind(class_name)
+            .bind(label_name)
             .bind(detail)
             .execute(&pool).await?;
             return Ok(res.last_insert_id())
@@ -99,7 +99,7 @@ impl Class {
         //sql 查询
         let res = sqlx::query(
            r#"
-           DELETE FROM `class` 
+           DELETE FROM `label` 
            WHERE `id` = ?
         "#
         )
@@ -111,17 +111,17 @@ impl Class {
         return Ok(true)
     }
 
-    pub async fn edit(id:u64,class_name:String,detail:String) -> Result<bool, Box<dyn std::error::Error>>{
+    pub async fn edit(id:u64,label_name:String,detail:String) -> Result<bool, Box<dyn std::error::Error>>{
         let pool = get_pool().await?;
         //sql 查询
         let res = sqlx::query(
            r#"
-           UPDATE `class` 
-           SET `class_name` = ?, `detail` = ?
+           UPDATE `label` 
+           SET `label_name` = ?, `detail` = ?
            WHERE `id` = ?
         "#
         )
-        .bind(class_name)
+        .bind(label_name)
         .bind(detail)
         .bind(id)
         .execute(&pool).await?;

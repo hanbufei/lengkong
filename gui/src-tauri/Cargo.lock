@@ -72,6 +72,7 @@ checksum = "74f37166d7d48a0284b99dd824694c26119c700b53bf0d1540cdb147dbdaaf13"
 name = "app"
 version = "2.0.0"
 dependencies = [
+ "chrono",
  "serde",
  "serde_json",
  "sqlx",
@@ -517,14 +518,16 @@ checksum = "613afe47fcd5fac7ccf1db93babcb082c5994d996f20b8b159f2ad1658eb5724"
 
 [[package]]
 name = "chrono"
-version = "0.4.38"
+version = "0.4.39"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a21f936df1771bf62b77f047b726c4625ff2e8aa607c01ec06e5a05bd8463401"
+checksum = "7e36cc9d416881d2e24f9a963be5fb1cd90966419ac844274161d10488b3e825"
 dependencies = [
  "android-tzdata",
  "iana-time-zone",
+ "js-sys",
  "num-traits",
  "serde",
+ "wasm-bindgen",
  "windows-targets 0.52.6",
 ]
 
@@ -3773,6 +3776,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6a007b6936676aa9ab40207cde35daab0a04b823be8ae004368c0793b96a61e0"
 dependencies = [
  "bytes",
+ "chrono",
  "crc",
  "crossbeam-queue",
  "either",
@@ -3793,6 +3797,7 @@ dependencies = [
  "sha2",
  "smallvec",
  "thiserror 2.0.9",
+ "time",
  "tokio",
  "tokio-stream",
  "tracing",
@@ -3849,6 +3854,7 @@ dependencies = [
  "bitflags 2.6.0",
  "byteorder",
  "bytes",
+ "chrono",
  "crc",
  "digest",
  "dotenvy",
@@ -3876,6 +3882,7 @@ dependencies = [
  "sqlx-core",
  "stringprep",
  "thiserror 2.0.9",
+ "time",
  "tracing",
  "whoami",
 ]
@@ -3890,6 +3897,7 @@ dependencies = [
  "base64 0.22.1",
  "bitflags 2.6.0",
  "byteorder",
+ "chrono",
  "crc",
  "dotenvy",
  "etcetera",
@@ -3913,6 +3921,7 @@ dependencies = [
  "sqlx-core",
  "stringprep",
  "thiserror 2.0.9",
+ "time",
  "tracing",
  "whoami",
 ]
@@ -3924,6 +3933,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f85ca71d3a5b24e64e1d08dd8fe36c6c95c339a896cc33068148906784620540"
 dependencies = [
  "atoi",
+ "chrono",
  "flume",
  "futures-channel",
  "futures-core",
@@ -3936,6 +3946,7 @@ dependencies = [
  "serde",
  "serde_urlencoded",
  "sqlx-core",
+ "time",
  "tracing",
  "url",
 ]

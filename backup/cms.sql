@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS `article`;
 CREATE TABLE `article`
 (
     `id`            int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
-    `class_id`      int(10) DEFAULT 0 COMMENT '类别ID',
+    `class_id`      int(10) unsigned DEFAULT 0 COMMENT '类别ID',
     `name`          varchar(100) NOT NULL COMMENT '文章名',
     `create_at`     datetime NOT NULL COMMENT '创建时间',
     `location`      text DEFAULT NULL COMMENT '文章位置',
