@@ -31,6 +31,11 @@ export default function Main({sendMessage}){
               .catch((error) => sendMessage(error,"text-red-500"))}>
                 test
               </button>
+              <button onClick={()=>add_article({class_id:1,name:"123",come_from:"yc"})
+              .then((res) => setText(JSON.stringify(res)))
+              .catch((error) => sendMessage(error,"text-red-500"))}>
+                add
+              </button>
               {text()}
             </Match>
           </Switch>

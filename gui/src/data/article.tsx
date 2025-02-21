@@ -35,7 +35,6 @@ export const add_article = async (a:article) => {
         let res = invoke('add_article',{
             classId:a.class_id,
             name:a.name,
-            createAt:dayjs().format("YYYY-MM-DD HH:mm:ss"),
             location:a.location?a.location:"",
             comeFrom:a.come_from?a.come_from:"",
             labelIdList:a.label_id_list?a.label_id_list:"",
